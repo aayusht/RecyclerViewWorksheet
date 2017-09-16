@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public CompaniesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,19 +18,26 @@ public class MainActivity extends AppCompatActivity {
         //TODO Question 1
         //Create a recyclerview with a linear layout
 
-        /* YOUR CODE HERE */
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Company> computerCompanies = new ArrayList<>();
+        ArrayList<Company> companies = new ArrayList<>();
 
         //TODO Question 2
-        //add 4 companies: apples, asus, dell, and microsoft
+        //add 4 companies: apple, asus, dell, and microsoft
 
-        /* YOUR CODE HERE */
+        for (int i = 0; i < 42; i++) {
+            companies.add(new Company("apple", 1, R.drawable.apple));
+            companies.add(new Company("asus", 2, R.drawable.asus));
+            companies.add(new Company("dell", 3, R.drawable.dell));
+            companies.add(new Company("microsoft", 4, R.drawable.microsoft));
+        }
 
         //TODO Question 3
         //set the adapter using the constructor
 
-        /* YOUR CODE HERE */
+        adapter = new CompaniesAdapter(this, companies);
+        recyclerView.setAdapter(adapter);
 
         //TODO Question 3.5??
         //guided row_view layout
